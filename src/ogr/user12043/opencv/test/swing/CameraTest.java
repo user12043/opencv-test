@@ -1,4 +1,4 @@
-package ogr.user12043.opencv.test;
+package ogr.user12043.opencv.test.swing;
 
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;

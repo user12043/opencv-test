@@ -1,6 +1,6 @@
-package ogr.user12043.opencv.test.gui;
+package ogr.user12043.opencv.test.swing.gui;
 
-import ogr.user12043.opencv.test.CameraTest;
+import ogr.user12043.opencv.test.swing.CameraTest;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
@@ -21,7 +21,7 @@ public class CameraDisplay extends javax.swing.JFrame {
     private CameraTest cameraTest;
     private ScheduledExecutorService service;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ogr.user12043.opencv.test.gui.CameraPanel cameraPanel;
+    private ogr.user12043.opencv.test.swing.gui.CameraPanel cameraPanel;
     private javax.swing.JButton jButton_takePhoto;
     private javax.swing.JToggleButton jToggleButton_control;
     // End of variables declaration//GEN-END:variables
@@ -62,8 +62,8 @@ public class CameraDisplay extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jToggleButton_control = new javax.swing.JToggleButton();
-        cameraPanel = new ogr.user12043.opencv.test.gui.CameraPanel();
         jButton_takePhoto = new javax.swing.JButton();
+        cameraPanel = new ogr.user12043.opencv.test.swing.gui.CameraPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Camera");
@@ -86,15 +86,6 @@ public class CameraDisplay extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         getContentPane().add(jToggleButton_control, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 9.0;
-        getContentPane().add(cameraPanel, gridBagConstraints);
-        cameraPanel.getAccessibleContext().setAccessibleName("");
 
         jButton_takePhoto.setText("Take Photo");
         jButton_takePhoto.setEnabled(false);
@@ -110,6 +101,13 @@ public class CameraDisplay extends javax.swing.JFrame {
         gridBagConstraints.weighty = 0.5;
         gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
         getContentPane().add(jButton_takePhoto, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 10.0;
+        getContentPane().add(cameraPanel, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

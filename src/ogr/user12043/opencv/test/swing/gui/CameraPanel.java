@@ -1,4 +1,4 @@
-package ogr.user12043.opencv.test.gui;
+package ogr.user12043.opencv.test.swing.gui;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;
@@ -11,8 +11,9 @@ import java.awt.image.BufferedImage;
  */
 public class CameraPanel extends javax.swing.JPanel {
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JLabel jLabel_display;
+    // End of variables declaration
 
     /**
      * Creates new form CameraPanel
@@ -50,6 +51,4 @@ public class CameraPanel extends javax.swing.JPanel {
         gridBagConstraints.weighty = 1.0;
         add(jLabel_display, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
-    // End of variables declaration//GEN-END:variables
-
 }
