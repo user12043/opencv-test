@@ -1,6 +1,6 @@
 package ogr.user12043.opencv.test.swing.gui;
 
-import ogr.user12043.opencv.test.swing.CameraTest;
+import ogr.user12043.opencv.test.CameraTest;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;

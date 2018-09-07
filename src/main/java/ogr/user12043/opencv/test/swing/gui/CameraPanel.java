@@ -22,7 +22,7 @@ public class CameraPanel extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void setImage(BufferedImage image) {
+    void setImage(BufferedImage image) {
         jLabel_display.setIcon(new ImageIcon(image));
         revalidate();
     }

@@ -1,4 +1,4 @@
-package ogr.user12043.opencv.test.swing;
+package ogr.user12043.opencv.test;
 
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
@@ -28,6 +28,7 @@ public class CameraTest {
         this.cameraIndex = cameraIndex;
         frame = new Mat();
         photoOutputFile = new File(Constants.PHOTO_OUTPUT_PATH);
+        photoOutputFile.mkdirs();
     }
 
     private void updateImage() {

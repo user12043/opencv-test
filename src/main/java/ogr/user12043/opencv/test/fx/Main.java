@@ -2,6 +2,7 @@ package ogr.user12043.opencv.test.fx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -19,8 +20,12 @@ public class Main extends Application {
     }
 
     public void start(Stage stage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("opencv-test.fxml"));
+        System.out.println(System.getProperty("user.dir"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("opencvTest.fxml"));
         BorderPane rootPane = loader.load();
-        OpencvTestController controller = loader.getController();
+        Scene scene = new Scene(rootPane, 640, 480);
+        stage.setScene(scene);
+        stage.setTitle("Camera");
+        stage.show();
     }
 }
