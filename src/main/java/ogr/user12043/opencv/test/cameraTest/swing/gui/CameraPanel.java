@@ -1,4 +1,4 @@
-package ogr.user12043.opencv.test.swing.gui;
+package ogr.user12043.opencv.test.cameraTest.swing.gui;
 
 import javax.swing.*;
 import java.awt.image.BufferedImage;

@@ -1,4 +1,4 @@
-package ogr.user12043.opencv.test.fx;
+package ogr.user12043.opencv.test.cameraTest.fx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

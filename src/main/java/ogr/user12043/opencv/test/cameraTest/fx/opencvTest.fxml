@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
             minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8"
-            fx:controller="ogr.user12043.opencv.test.fx.OpencvTestController">
+            fx:controller="ogr.user12043.opencv.test.cameraTest.fx.OpencvTestController">
   <bottom>
     <Button fx:id="btn_control" alignment="CENTER" mnemonicParsing="false" onAction="#controlCamera"
             style="-fx-border-color: red;" text="Start Camera" BorderPane.alignment="CENTER">

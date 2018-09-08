@@ -1,6 +1,6 @@
-package ogr.user12043.opencv.test.swing;
+package ogr.user12043.opencv.test.cameraTest.swing;
 
-import ogr.user12043.opencv.test.swing.gui.CameraDisplay;
+import ogr.user12043.opencv.test.cameraTest.swing.gui.CameraDisplay;
 
 import javax.swing.*;
 

@@ -1,6 +1,6 @@
-package ogr.user12043.opencv.test.swing.gui;
+package ogr.user12043.opencv.test.cameraTest.swing.gui;
 
-import ogr.user12043.opencv.test.CameraTest;
+import ogr.user12043.opencv.test.cameraTest.CameraTest;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
@@ -21,7 +21,7 @@ public class CameraDisplay extends javax.swing.JFrame {
     private CameraTest cameraTest;
     private ScheduledExecutorService service;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ogr.user12043.opencv.test.swing.gui.CameraPanel cameraPanel;
+    private ogr.user12043.opencv.test.cameraTest.swing.gui.CameraPanel cameraPanel;
     private javax.swing.JButton jButton_takePhoto;
     private javax.swing.JToggleButton jToggleButton_control;
     // End of variables declaration//GEN-END:variables
@@ -63,7 +63,7 @@ public class CameraDisplay extends javax.swing.JFrame {
 
         jToggleButton_control = new javax.swing.JToggleButton();
         jButton_takePhoto = new javax.swing.JButton();
-        cameraPanel = new ogr.user12043.opencv.test.swing.gui.CameraPanel();
+        cameraPanel = new ogr.user12043.opencv.test.cameraTest.swing.gui.CameraPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Camera");

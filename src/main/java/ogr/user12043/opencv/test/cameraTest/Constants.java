@@ -1,4 +1,4 @@
-package ogr.user12043.opencv.test;
+package ogr.user12043.opencv.test.cameraTest;
 
 /**
  * Created on 05.09.2018 - 22:06

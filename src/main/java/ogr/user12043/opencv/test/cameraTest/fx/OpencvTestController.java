@@ -1,11 +1,11 @@
-package ogr.user12043.opencv.test.fx;
+package ogr.user12043.opencv.test.cameraTest.fx;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import ogr.user12043.opencv.test.CameraTest;
+import ogr.user12043.opencv.test.cameraTest.CameraTest;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
