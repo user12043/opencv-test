@@ -90,4 +90,8 @@ public class CameraTest {
     public void end() {
         videoCapture.release();
     }
+
+    public boolean isRunning() {
+        return videoCapture.isOpened();
+    }
 }

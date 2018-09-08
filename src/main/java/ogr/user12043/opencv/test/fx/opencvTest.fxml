@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8"
+            minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8"
             fx:controller="ogr.user12043.opencv.test.fx.OpencvTestController">
   <bottom>
     <Button fx:id="btn_control" alignment="CENTER" mnemonicParsing="false" onAction="#controlCamera"
@@ -16,7 +16,7 @@
     </Button>
   </bottom>
   <center>
-    <ImageView fx:id="imgview_display" fitHeight="190.0" fitWidth="241.0" pickOnBounds="true" preserveRatio="true"
+    <ImageView fx:id="imgview_display" fitHeight="480.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true"
                BorderPane.alignment="CENTER"/>
   </center>
 </BorderPane>
