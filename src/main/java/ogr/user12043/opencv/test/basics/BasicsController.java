@@ -57,7 +57,7 @@ public class BasicsController {
     @FXML
     public void controlAddLogo(ActionEvent event) {
         if (checkBox_addLogo.isSelected()) {
-            cameraTest.setLogo("res/img/resim2.png");
+            cameraTest.setLogo("res/img/Poli.png");
         } else {
             cameraTest.setLogo("");
         }

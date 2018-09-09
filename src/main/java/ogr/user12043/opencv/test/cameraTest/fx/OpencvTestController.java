@@ -52,7 +52,7 @@ public class OpencvTestController {
         service.scheduleAtFixedRate(this::update, 0, 33, TimeUnit.MILLISECONDS);
     }
 
-    public void endService() {
+    void endService() {
         if (cameraTest.isRunning()) {
             service.shutdown();
             cameraTest.end();

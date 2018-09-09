@@ -41,18 +41,16 @@ public class CameraTest {
     private void updateImage() {
         if (videoCapture.isOpened()) {
             videoCapture.read(frame);
-            if (logo != null) { // TODO not working
+            if (logo != null) {
                 Rect roi = new Rect(frame.cols() - logo.cols(), frame.rows() - logo.rows(), logo.cols(), logo.rows());
                 Mat imageRoi = frame.submat(roi);
 
                 // method 1
-                Core.addWeighted(imageRoi, 1.0, logo, 0.7, 0.0, imageRoi);
+                Core.addWeighted(imageRoi, 1.0d, logo, 1.0d, -5.0d, imageRoi);
 
                 //method 2
 //                Mat mask = logo.clone();
 //                logo.copyTo(imageRoi, mask);
-
-//                frame = imageRoi;
             }
 
             if (grayScale) {
