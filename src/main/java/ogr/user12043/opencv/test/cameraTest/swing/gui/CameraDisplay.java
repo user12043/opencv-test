@@ -1,6 +1,7 @@
 package ogr.user12043.opencv.test.cameraTest.swing.gui;
 
 import ogr.user12043.opencv.test.cameraTest.CameraTest;
+import ogr.user12043.opencv.test.cameraTest.Constants;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
@@ -32,7 +33,7 @@ public class CameraDisplay extends javax.swing.JFrame {
      */
     public CameraDisplay() {
         initComponents();
-        cameraTest = new CameraTest(0);
+        cameraTest = new CameraTest(Constants.CAMERA_INDEX);
     }
 
     private void initService() {

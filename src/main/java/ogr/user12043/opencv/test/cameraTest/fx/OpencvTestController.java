@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import ogr.user12043.opencv.test.cameraTest.CameraTest;
+import ogr.user12043.opencv.test.cameraTest.Constants;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -27,7 +28,7 @@ public class OpencvTestController {
     private ImageView imgview_display;
 
     public OpencvTestController() {
-        cameraTest = new CameraTest(0);
+        cameraTest = new CameraTest(Constants.CAMERA_INDEX);
     }
 
     @FXML

@@ -1,6 +1,10 @@
 package ogr.user12043.opencv.test.cameraTest;
 
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import org.opencv.core.Rect;
+import org.opencv.imgcodecs.Imgcodecs;
+import org.opencv.imgproc.Imgproc;
 import org.opencv.videoio.VideoCapture;
 
 import javax.imageio.ImageIO;
@@ -22,6 +26,9 @@ public class CameraTest {
     private BufferedImage bufferedImage;
     private File photoOutputFile;
     private int cameraIndex;
+    private boolean grayScale = false;
+    private Mat logo;
+
 
     public CameraTest(int cameraIndex) {
         this.videoCapture = new VideoCapture();
@@ -34,6 +41,23 @@ public class CameraTest {
     private void updateImage() {
         if (videoCapture.isOpened()) {
             videoCapture.read(frame);
+            if (logo != null) { // TODO not working
+                Rect roi = new Rect(frame.cols() - logo.cols(), frame.rows() - logo.rows(), logo.cols(), logo.rows());
+                Mat imageRoi = frame.submat(roi);
+
+                // method 1
+                Core.addWeighted(imageRoi, 1.0, logo, 0.7, 0.0, imageRoi);
+
+                //method 2
+//                Mat mask = logo.clone();
+//                logo.copyTo(imageRoi, mask);
+
+//                frame = imageRoi;
+            }
+
+            if (grayScale) {
+                Imgproc.cvtColor(frame, frame, Imgproc.COLOR_BGR2GRAY);
+            }
             bufferedImage = matToBufferedImage(frame);
         }
     }
@@ -71,18 +95,6 @@ public class CameraTest {
         return image;
     }
 
-    /*public void displayOnFrame(JFrame displayFrame) {
-        service = Executors.newSingleThreadScheduledExecutor();
-        service.scheduleAtFixedRate(() -> {
-            updateImage();
-//            SwingUtilities.invokeLater(() -> {
-            if (displayFrame != null) {
-//                displayFrame.update(bufferedImage);
-            }
-//            });
-        }, 0, 33, TimeUnit.MILLISECONDS);
-    }*/
-
     public void start() {
         videoCapture.open(cameraIndex);
     }
@@ -93,5 +105,25 @@ public class CameraTest {
 
     public boolean isRunning() {
         return videoCapture.isOpened();
+    }
+
+    public void setGrayScale(boolean grayScale) {
+        this.grayScale = grayScale;
+    }
+
+    public void setLogo(String logoPath) {
+        if (logoPath != null && !logoPath.isEmpty()) {
+            File file = new File(logoPath);
+            if (file.exists()) {
+                this.logo = Imgcodecs.imread(logoPath);
+            } else {
+                System.err.println("logoPath is not valid!");
+                System.err.println("Logo path: " + logoPath);
+                System.err.println("Working dir: " + System.getProperty("user.dir"));
+                this.logo = null;
+            }
+        } else {
+            this.logo = null;
+        }
     }
 }

@@ -25,12 +25,16 @@
     <repository>
       <id>in-project-repository</id>
       <name>In project repository</name>
-      <url>file://${project.basedir}/${lib-folder}/${javafx-version}</url>
+      <url>file://${project.basedir}/${lib-folder}/maven</url>
     </repository>
   </repositories>
 
   <dependencies>
-
+    <dependency>
+      <groupId>org.opencv</groupId>
+      <artifactId>opencv-java</artifactId>
+      <version>3.4.3</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -45,6 +49,34 @@
         </includes>
       </resource>
     </resources>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <executions>
+          <execution>
+            <id>exec1-swing</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>ogr.user12043.opencv.test.cameraTest.swing.Main</mainClass>
+            </configuration>
+          </execution>
+          <execution>
+            <id>exec2</id>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>ogr.user12043.opencv.test.basics.Main</mainClass>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
   </build>
 
 </project>
