@@ -5,9 +5,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
-import ogr.user12043.opencv.test.cameraTest.CameraTest;
+import ogr.user12043.opencv.test.Utils;
 import ogr.user12043.opencv.test.cameraTest.Constants;
+import org.opencv.core.Mat;
+import org.opencv.videoio.VideoCapture;
 
+import java.awt.image.BufferedImage;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +23,7 @@ import java.util.concurrent.TimeUnit;
  * @author user12043
  */
 public class OpencvTestController {
-    private CameraTest cameraTest;
+    private VideoCapture videoCapture;
     private ScheduledExecutorService service;
     @FXML
     private Button btn_control;
@@ -28,12 +31,12 @@ public class OpencvTestController {
     private ImageView imgview_display;
 
     public OpencvTestController() {
-        cameraTest = new CameraTest(Constants.CAMERA_INDEX);
+        videoCapture = new VideoCapture();
     }
 
     @FXML
     public void controlCamera(ActionEvent event) {
-        if (cameraTest.isRunning()) {
+        if (videoCapture.isOpened()) {
             endService();
             btn_control.setText("Start Camera");
         } else {
@@ -43,19 +46,27 @@ public class OpencvTestController {
     }
 
     private void update() {
-        imgview_display.setImage(SwingFXUtils.toFXImage(cameraTest.getImage(), null));
+        Mat mat = new Mat();
+        videoCapture.read(mat);
+        BufferedImage frame = Utils.matToBufferedImage(mat);
+        imgview_display.setImage(SwingFXUtils.toFXImage(frame, null));
     }
 
     private void initService() {
-        cameraTest.start();
+        videoCapture.open(Constants.CAMERA_INDEX);
         service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::update, 0, 33, TimeUnit.MILLISECONDS);
     }
 
     void endService() {
-        if (cameraTest.isRunning()) {
-            service.shutdown();
-            cameraTest.end();
+        if (videoCapture.isOpened()) {
+            service.shutdownNow();
+            try {
+                service.awaitTermination(1, TimeUnit.MINUTES);
+            } catch (InterruptedException e) {
+                System.err.println("Can not stop the frame!");
+            }
+            videoCapture.release();
         }
     }
 }

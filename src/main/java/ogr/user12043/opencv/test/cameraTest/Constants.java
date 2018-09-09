@@ -7,6 +7,7 @@ package ogr.user12043.opencv.test.cameraTest;
  * @author user12043
  */
 public class Constants {
-    public static final int CAMERA_INDEX = 1;
-    static final String PHOTO_OUTPUT_PATH = "output/photo.png";
+    public static final int CAMERA_INDEX = 0;
+    public static final String PHOTO_OUTPUT_PATH = "output/photo.png";
+    public static final String LOGO_PATH = "res/img/Poli.png";
 }

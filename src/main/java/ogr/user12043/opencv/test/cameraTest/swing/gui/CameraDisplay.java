@@ -1,11 +1,14 @@
 package ogr.user12043.opencv.test.cameraTest.swing.gui;
 
-import ogr.user12043.opencv.test.cameraTest.CameraTest;
+import ogr.user12043.opencv.test.Utils;
 import ogr.user12043.opencv.test.cameraTest.Constants;
+import org.opencv.core.Mat;
+import org.opencv.videoio.VideoCapture;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -19,8 +22,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class CameraDisplay extends javax.swing.JFrame {
 
-    private CameraTest cameraTest;
+    private VideoCapture videoCapture;
     private ScheduledExecutorService service;
+    private BufferedImage frame;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ogr.user12043.opencv.test.cameraTest.swing.gui.CameraPanel cameraPanel;
     private javax.swing.JButton jButton_takePhoto;
@@ -33,7 +37,7 @@ public class CameraDisplay extends javax.swing.JFrame {
      */
     public CameraDisplay() {
         initComponents();
-        cameraTest = new CameraTest(Constants.CAMERA_INDEX);
+        videoCapture = new VideoCapture();
     }
 
     private void initService() {
@@ -41,14 +45,30 @@ public class CameraDisplay extends javax.swing.JFrame {
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
-                cameraTest.end();
+                videoCapture.release();
                 super.windowClosed(e);
             }
         });
+        service.scheduleAtFixedRate(this::update, 0, 33, TimeUnit.MILLISECONDS);
+    }
+
+    private void endService() {
+        service.shutdownNow();
+        try {
+            jButton_takePhoto.setEnabled(false);
+            service.awaitTermination(1, TimeUnit.MINUTES);
+            videoCapture.release();
+        } catch (InterruptedException e) {
+            System.err.println("Cannot stop the camera");
+            e.printStackTrace();
+        }
     }
 
     private void update() {
-        cameraPanel.setImage(cameraTest.getImage());
+        Mat mat = new Mat();
+        videoCapture.read(mat);
+        this.frame = Utils.matToBufferedImage(mat);
+        cameraPanel.setImage(this.frame);
     }
 
     /**
@@ -116,27 +136,18 @@ public class CameraDisplay extends javax.swing.JFrame {
     private void jToggleButton_controlItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jToggleButton_controlItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             jToggleButton_control.setText("Stop");
-            cameraTest.start();
+            videoCapture.open(Constants.CAMERA_INDEX);
             initService();
-            service.scheduleAtFixedRate(this::update, 0, 33, TimeUnit.MILLISECONDS);
             jButton_takePhoto.setEnabled(true);
         } else if (evt.getStateChange() == ItemEvent.DESELECTED) {
             jToggleButton_control.setText("Start");
-            service.shutdown();
-            try {
-                jButton_takePhoto.setEnabled(false);
-                service.awaitTermination(1, TimeUnit.MINUTES);
-                cameraTest.end();
-            } catch (InterruptedException e) {
-                System.err.println("Cannot stop the camera");
-                e.printStackTrace();
-            }
+            endService();
         }
     }//GEN-LAST:event_jToggleButton_controlItemStateChanged
 
     private void jButton_takePhotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_takePhotoActionPerformed
         try {
-            cameraTest.savePhoto();
+            Utils.saveImage(this.frame);
         } catch (IOException e) {
             System.err.println("Can not take photo");
             e.printStackTrace();
