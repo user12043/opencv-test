@@ -1,7 +1,7 @@
 package ogr.user12043.opencv.test.cameraTest.swing.gui;
 
 import ogr.user12043.opencv.test.Utils;
-import ogr.user12043.opencv.test.cameraTest.Constants;
+import ogr.user12043.opencv.test.Constants;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 

@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.image.ImageView;
 import ogr.user12043.opencv.test.Utils;
-import ogr.user12043.opencv.test.cameraTest.Constants;
+import ogr.user12043.opencv.test.Constants;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.Rect;
@@ -71,7 +71,7 @@ public class BasicsController {
                 this.logo = Imgcodecs.imread(Constants.LOGO_PATH);
             } else {
                 System.err.println("logoPath is not valid!");
-                System.err.println("Logo path: " + Constants.LOGO_PATH);
+                System.err.println("Logo path: " + file.getAbsolutePath());
                 System.err.println("Working dir: " + System.getProperty("user.dir"));
                 this.logo = null;
             }

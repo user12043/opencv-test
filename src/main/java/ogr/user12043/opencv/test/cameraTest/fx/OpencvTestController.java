@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import ogr.user12043.opencv.test.Utils;
-import ogr.user12043.opencv.test.cameraTest.Constants;
+import ogr.user12043.opencv.test.Constants;
 import org.opencv.core.Mat;
 import org.opencv.videoio.VideoCapture;
 
