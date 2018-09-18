@@ -1,6 +1,5 @@
 package ogr.user12043.opencv.test;
 
-import ogr.user12043.opencv.test.cameraTest.Constants;
 import org.opencv.core.Mat;
 
 import javax.imageio.ImageIO;
