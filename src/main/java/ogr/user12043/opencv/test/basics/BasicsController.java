@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import ogr.user12043.opencv.test.Constants;
@@ -47,6 +48,9 @@ public class BasicsController {
     @FXML
     private CheckBox checkBox_addLogo;
 
+    @FXML
+    private TextField textField_sourceLocation;
+
     public BasicsController() {
         videoCapture = new VideoCapture();
     }
@@ -74,9 +78,9 @@ public class BasicsController {
             if (file.exists()) {
                 this.logo = Imgcodecs.imread(Constants.LOGO_PATH);
             } else {
-                System.err.println("logoPath is not valid!");
-                System.err.println("Logo path: " + file.getAbsolutePath());
-                System.err.println("Working dir: " + System.getProperty("user.dir"));
+                System.err.println("logoPath is not valid!\n" +
+                        "Logo path: " + file.getAbsolutePath() +
+                        "\nWorking dir: " + System.getProperty("user.dir"));
                 this.logo = null;
             }
         } else {
@@ -90,6 +94,7 @@ public class BasicsController {
         videoCapture.read(frame);
 
         if (this.logo != null) {
+            // Add logo
             Rect roi = new Rect(frame.cols() - logo.cols(), frame.rows() - logo.rows(), logo.cols(), logo.rows());
             Mat imageRoi = frame.submat(roi);
 
@@ -102,6 +107,7 @@ public class BasicsController {
         }
 
         if (this.grayScale) {
+            // Make gray scale
             Imgproc.cvtColor(frame, frame, Imgproc.COLOR_BGR2GRAY);
         }
 
@@ -154,7 +160,12 @@ public class BasicsController {
     }
 
     private void initService() {
-        videoCapture.open(Constants.CAMERA_INDEX);
+        final String sourceLocation = textField_sourceLocation.getText();
+        if (sourceLocation.isEmpty()) {
+            videoCapture.open(Constants.CAMERA_INDEX);
+        } else {
+            videoCapture.open(sourceLocation);
+        }
         service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::update, 0, 33, TimeUnit.MILLISECONDS);
     }

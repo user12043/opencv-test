@@ -4,6 +4,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import ogr.user12043.opencv.test.Constants;
 import ogr.user12043.opencv.test.Utils;
@@ -29,6 +30,8 @@ public class OpencvTestController {
     private Button btn_control;
     @FXML
     private ImageView imgview_display;
+    @FXML
+    private TextField textField_sourceLocation;
 
     public OpencvTestController() {
         videoCapture = new VideoCapture();
@@ -53,7 +56,12 @@ public class OpencvTestController {
     }
 
     private void initService() {
-        videoCapture.open(Constants.CAMERA_INDEX);
+        final String sourceLocation = textField_sourceLocation.getText();
+        if (sourceLocation.isEmpty()) {
+            videoCapture.open(Constants.CAMERA_INDEX);
+        } else {
+            videoCapture.open(sourceLocation);
+        }
         service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::update, 0, 33, TimeUnit.MILLISECONDS);
     }
