@@ -30,11 +30,11 @@
   </repositories>
 
   <dependencies>
-    <dependency>
+    <!--<dependency>
       <groupId>org.opencv</groupId>
       <artifactId>opencv-java</artifactId>
       <version>3.4.3</version>
-    </dependency>
+    </dependency>-->
   </dependencies>
 
   <build>

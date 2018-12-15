@@ -25,7 +25,7 @@ public class Main {
             // Instead of this, run the program with jvm argument (requires absolute path in this case):
             // -Djava.library.path=/path/to/opencv/library/file
             // e.g:
-            // -Djava.library.path=C:\Users\ME99735\Desktop\Folder\projects\java\NonToyota\opencv-test\lib\opencv-windows\x64
+            // -Djava.library.path=C:\Users\AUser\Desktop\projects\opencv-test\lib\opencv-windows\x64
 
 
             System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
