@@ -40,6 +40,8 @@ public class Utils {
     }
 
     public static void saveImage(BufferedImage image) throws IOException {
-        ImageIO.write(image, "png", new File(Constants.PHOTO_OUTPUT_PATH));
+        final File outFile = new File(Constants.PHOTO_OUTPUT_PATH);
+        outFile.mkdirs();
+        ImageIO.write(image, "png", outFile);
     }
 }
