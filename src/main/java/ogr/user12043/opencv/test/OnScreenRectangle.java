@@ -47,13 +47,14 @@ public class OnScreenRectangle extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 nanoTime = System.nanoTime();
+                System.out.println("mouse pressed: " + nanoTime);
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                System.out.println("mouse released");
                 final long passedTime = System.nanoTime() - nanoTime;
-                if (passedTime >= 300000000L) { // if pressed more than 3 seconds
+                System.out.println("mouse released: " + passedTime);
+                if (passedTime >= 2000000000L) { // if pressed more than 2 seconds
                     dispose();
                 }
             }
