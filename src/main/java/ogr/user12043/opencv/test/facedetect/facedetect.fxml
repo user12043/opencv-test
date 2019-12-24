@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="ogr.user12043.opencv.test.facedetect.FaceDetectController">
+   <top>
+      <VBox minWidth="-Infinity" prefHeight="25.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Label text="Source Location: "/>
+                  <TextField fx:id="textField_sourceLocation" prefHeight="25.0" prefWidth="560.0"
+                             promptText="ip or camera id: http://192.168.40.25/video (default: 0)"/>
+               </children>
+               <padding>
+                  <Insets top="5.0"/>
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER" minWidth="-Infinity" prefHeight="62.0" prefWidth="800.0">
+               <children>
+                  <RadioButton fx:id="radioBtn_haar" mnemonicParsing="false" text="Haar">
+                     <HBox.margin>
+                        <Insets right="20.0"/>
+                     </HBox.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="radioBtn_lbp" mnemonicParsing="false" text="LBP">
+                     <HBox.margin>
+                        <Insets left="20.0"/>
+                     </HBox.margin>
+                  </RadioButton>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+            </HBox>
+            <Separator prefHeight="0.0" prefWidth="800.0"/>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <Button fx:id="btn_toggleCamera" mnemonicParsing="false" onAction="#toggleCamera" style="-fx-border-color: red;"
+              text="Start Camera" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0"/>
+         </BorderPane.margin>
+      </Button>
+   </bottom>
+   <center>
+      <ImageView fx:id="imgView_display" fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true"
+                 BorderPane.alignment="CENTER"/>
+   </center>
+</BorderPane>
