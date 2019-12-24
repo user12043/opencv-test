@@ -18,7 +18,7 @@
     </Button>
   </bottom>
   <center>
-    <ImageView fx:id="imgview_display" fitHeight="480.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true"
+    <ImageView fx:id="imgView_display" fitHeight="480.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true"
                BorderPane.alignment="CENTER"/>
   </center>
   <top>

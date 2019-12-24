@@ -1,6 +1,7 @@
 package ogr.user12043.opencv.test;
 
 import org.opencv.core.Mat;
+import org.opencv.videoio.VideoCapture;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -41,7 +42,20 @@ public class Utils {
 
     public static void saveImage(BufferedImage image) throws IOException {
         final File outFile = new File(Constants.PHOTO_OUTPUT_PATH);
+        //noinspection ResultOfMethodCallIgnored
         outFile.mkdirs();
         ImageIO.write(image, "png", outFile);
+    }
+
+    public static void initVideoCapture(VideoCapture videoCapture, String sourceLocation) {
+        if (sourceLocation.isEmpty()) {
+            videoCapture.open(Constants.CAMERA_INDEX);
+        } else {
+            try {
+                videoCapture.open(Integer.parseInt(sourceLocation));
+            } catch (Exception e) {
+                videoCapture.open(sourceLocation);
+            }
+        }
     }
 }

@@ -161,11 +161,7 @@ public class BasicsController {
 
     private void initService() {
         final String sourceLocation = textField_sourceLocation.getText();
-        if (sourceLocation.isEmpty()) {
-            videoCapture.open(Constants.CAMERA_INDEX);
-        } else {
-            videoCapture.open(sourceLocation);
-        }
+        Utils.initVideoCapture(videoCapture, sourceLocation);
         service = Executors.newSingleThreadScheduledExecutor();
         service.scheduleAtFixedRate(this::update, 0, 33, TimeUnit.MILLISECONDS);
     }

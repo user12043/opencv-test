@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="ogr.user12043.opencv.test.fourierTransform.FourierController">
+  <left>
+    <ImageView fx:id="imgView_original" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"
+               BorderPane.alignment="CENTER"/>
+  </left>
+  <right>
+    <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <children>
+        <ImageView fx:id="imgView_transformed" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                   preserveRatio="true"/>
+        <ImageView fx:id="imgView_antiTransformed" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
+                   preserveRatio="true"/>
+      </children>
+    </VBox>
+  </right>
+  <bottom>
+    <HBox alignment="TOP_CENTER" prefHeight="33.0" prefWidth="600.0" style="-fx-padding: 10;"
+          BorderPane.alignment="CENTER">
+      <children>
+        <Button fx:id="btn_loadImage" mnemonicParsing="false" onAction="#loadImage" text="Load Image"/>
+        <Button fx:id="btn_transform" mnemonicParsing="false" onAction="#transform" text="Transform">
+          <HBox.margin>
+            <Insets left="10.0" right="10.0"/>
+          </HBox.margin>
+        </Button>
+        <Button fx:id="btn_antiTransform" mnemonicParsing="false" text="Anti transform"/>
+      </children>
+      <BorderPane.margin>
+        <Insets/>
+      </BorderPane.margin>
+    </HBox>
+  </bottom>
+</BorderPane>
